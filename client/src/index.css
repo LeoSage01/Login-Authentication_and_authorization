@@ -11,7 +11,7 @@
 body{
     height: 100vh;
     background: #dcdce6;
-    background-image: url('./assets/images.png');
+/*     background-image: url('./assets/images.png'); */
     background-repeat: no-repeat;
     background-size: cover; 
 }
