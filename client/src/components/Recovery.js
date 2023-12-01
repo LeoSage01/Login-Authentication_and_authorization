@@ -66,7 +66,7 @@ export default function Recovery() {
             </span>
           </div>
 
-          <form className='pt-16' onSubmit={onSubmit}>
+          <form className='pt-16 px-4' onSubmit={onSubmit}>
 
               <div className="textbox flex flex-col items-center gap-4">
 
