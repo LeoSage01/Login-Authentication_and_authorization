@@ -62,7 +62,7 @@ export default function Recovery() {
           <div className="title flex flex-col items-center">
             <h4 className='text-xl font-bold'>Recovery</h4>
             <span className='py-4 w-2/3 text-center text-gray-500'>
-                Enter OTP to recover password.
+                Enter OTP to recover password
             </span>
           </div>
 
