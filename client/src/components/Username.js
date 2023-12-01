@@ -1,41 +1,64 @@
-.glass{
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 2px;
-    box-shadow: 0 4px 30px #4747470b;
-    backdrop-filter: blur(7.1px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    @apply border-4 border-gray-50  w-[30%] rounded-3xl py-10 px-4 min-w-max;
-}
+import React, { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import avatar from '../assets/profile.png';
+import { Toaster } from 'react-hot-toast';
+import { useFormik } from 'formik';
+import { usernameValidate } from '../helper/validate'
+import { useAuthStore } from '../store/store'
 
-.profile_img{
-    @apply border-4 border-gray-100 w-[135px] rounded-full shadow-lg cursor-pointer;
-    @apply hover:border-gray-200;
-}
+import styles from '../styles/Username.module.css';
 
-.textbox{
-    @apply border-0 px-4 py-2 rounded-xl w-3/4 shadow-sm ;
-    @apply focus:outline-none;
-}
+export default function Username() {
 
-.btn{
-    @apply border bg-purple-600 w-3/4 py-2 rounded-lg text-gray-50 shadow-sm text-center;
-}
+  const navigate = useNavigate();
+  const setUsername = useAuthStore(state => state.setUsername);
 
-.btn:hover{
-    background-color: #e32983;
-}
-
-input[type='file']{
-    display: none;
-}
-
-@media screen and (max-width: 1000px) {
-    /* Styles to apply when the screen width is 600 pixels or less */
-    .glass{
-        border-radius: 0px;
-        border: none;
-        @apply content-center w-[30%] px-6 min-w-max;
+  const formik = useFormik({
+    initialValues : {
+      username : ''
+    },
+    validate : usernameValidate,
+    validateOnBlur: false,
+    validateOnChange: false,
+    onSubmit : async values => {
+      setUsername(values.username);
+      navigate('/password')
     }
-  }
+  })
 
-  
+  return (
+    <div className="container mx-auto">
+
+      <Toaster position='top-center' reverseOrder={false}></Toaster>
+
+      <div className='flex justify-center items-center h-screen'>
+        <div className={styles.glass}>
+
+          <div className="title flex flex-col items-center">
+            <h4 className='text-5xl font-bold'>Hello Again!</h4>
+            <span className='py-4 text-xl w-2/3 text-center text-gray-500'>
+              Explore More by connecting with us.
+            </span>
+          </div>
+
+          <form className='py-1' onSubmit={formik.handleSubmit}>
+              <div className='profile flex justify-center py-4'>
+                  <img src={avatar} className={styles.profile_img} alt="avatar" />
+              </div>
+
+              <div className="textbox flex flex-col items-center gap-6">
+                  <input {...formik.getFieldProps('username')} className={styles.textbox} type="text" placeholder='Username' />
+                  <button className={styles.btn} type='submit'>Let's Go</button>
+              </div>
+
+              <div className="text-center py-4">
+                <span className='text-gray-500'>Not a Member <Link className='text-red-500' to="/register">Register Now</Link></span>
+              </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  )
+}
