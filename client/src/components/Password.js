@@ -39,9 +39,19 @@ export default function Password() {
     }
   })
 
-  if(isLoading) return <h1 className='text-2xl font-bold'>isLoading</h1>;
-  if(serverError) return <h1 className='text-xl text-red-500'>{serverError.message}</h1>
-
+  if (isLoading)
+    return (
+      <div className="h-[100vh] w-full flex justify-center">
+        <h1 className="text-2xl mt-40 font-bold">Loading...</h1>
+      </div>
+    );
+  if (serverError)
+    return (
+      <div className="h-[100vh] w-full flex justify-center">
+        <h1 className="text-xl text-red-500">{serverError.message}</h1>
+      </div>
+    );
+    
   return (
     <div className="container mx-auto">
 
@@ -51,7 +61,7 @@ export default function Password() {
         <div className={styles.glass}>
 
           <div className="title flex flex-col items-center">
-            <h4 className='text-xl font-bold'>Hello {apiData?.firstName || apiData?.username}</h4>
+            <h4 className='text-2xl font-bold'>Hello {apiData?.firstName || apiData?.username}</h4>
             <span className='py-4 w-2/3 text-center text-gray-500'>
               Explore More by connecting with us.
             </span>
@@ -62,12 +72,12 @@ export default function Password() {
                   <img src={apiData?.profile || avatar} className={styles.profile_img} alt="avatar" />
               </div>
 
-              <div className="textbox flex flex-col items-center gap-4">
+              <div className="textbox flex flex-col items-center gap-6">
                   <input {...formik.getFieldProps('password')} className={styles.textbox} type="text" placeholder='Password' />
                   <button className={styles.btn} type='submit'>Sign In</button>
               </div>
 
-              <div className="text-center py-2">
+              <div className="text-center py-4">
                 <span className='text-gray-500'>Forgot Password? <Link className='text-red-500' to="/recovery">Recover Now</Link></span>
               </div>
 

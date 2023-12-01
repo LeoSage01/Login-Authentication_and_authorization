@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import { useAuthStore } from  '../store/store'
 import styles from '../styles/Username.module.css';
+import extend from '../styles/Profile.module.css'
 import { generateOTP, verifyOTP } from '../helper/helper';
 import { useNavigate } from 'react-router-dom'
 
@@ -57,25 +58,25 @@ export default function Recovery() {
       <Toaster position='top-center' reverseOrder={false}></Toaster>
 
       <div className='flex justify-center items-center h-screen'>
-        <div className={styles.glass}>
+      <div className={styles.glass}>
 
-          <div className="title flex flex-col items-center">
-            <h4 className='text-xl font-bold'>Recovery</h4>
+          <div className="title profile flex flex-col items-center">
+            <h4 className='text-2xl font-bold'>Recovery</h4>
             <span className='py-4 w-2/3 text-center text-gray-500'>
-                Enter OTP to recover password
+                Enter OTP to recover password.
             </span>
           </div>
 
-          <form className='pt-16 px-6' onSubmit={onSubmit}>
+          <form className='pt-20' onSubmit={onSubmit}>
 
-              <div className="textbox flex flex-col items-center gap-4">
+              <div className=" flex flex-col items-center content-center gap-6">
 
-                  <div className="input text-center">
-                    <span className='my-8 text-sm text-left text-gray-500'>
+                  {/* <div className="input text-center"> */}
+                    <span className='py-4 text-sm  text-gray-500'>
                       Enter 6 digit OTP sent to your email address.
                     </span>
                     <input onChange={(e) => setOTP(e.target.value) } className={styles.textbox} type="text" placeholder='OTP' />
-                  </div>
+                  {/* </div> */}
 
                   <button className={styles.btn} type='submit'>Recover</button>
               </div>
@@ -90,3 +91,5 @@ export default function Recovery() {
     </div>
   )
 }
+
+

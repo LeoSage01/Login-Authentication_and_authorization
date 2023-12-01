@@ -39,8 +39,18 @@ export default function Reset() {
   })
 
 
-  if(isLoading) return <h1 className='text-2xl font-bold'>isLoading</h1>;
-  if(serverError) return <h1 className='text-xl text-red-500'>{serverError.message}</h1>
+  if (isLoading)
+    return (
+      <div className="h-[100vh] w-full flex justify-center">
+        <h1 className="text-2xl mt-40 font-bold">Loading...</h1>
+      </div>
+    );
+  if (serverError)
+    return (
+      <div className="h-[100vh] w-full flex justify-center">
+        <h1 className="text-xl text-red-500">{serverError.message}</h1>
+      </div>
+    );
   if(status && status !== 201) return <Navigate to={'/password'} replace={true}></Navigate>
 
   return (
@@ -52,13 +62,13 @@ export default function Reset() {
         <div className={styles.glass} style={{ width : "50%"}}>
 
           <div className="title flex flex-col items-center">
-            <h4 className='text-xl font-bold'>Reset</h4>
-            <span className='py-4 w-2/3 text-center text-gray-500'>
+            <h4 className='text-5xl font-bold'>Reset</h4>
+            <span className='py-4 text-xl w-2/3 text-center text-gray-500'>
               Enter new password.
             </span>
           </div>
 
-          <form className='py-16' onSubmit={formik.handleSubmit}>
+          <form className='py-20' onSubmit={formik.handleSubmit}>
               <div className="textbox flex flex-col items-center gap-6">
                   <input {...formik.getFieldProps('password')} className={styles.textbox} type="text" placeholder='New Password' />
                   <input {...formik.getFieldProps('confirm_pwd')} className={styles.textbox} type="text" placeholder='Repeat Password' />
