@@ -66,12 +66,12 @@ export default function Recovery() {
             </span>
           </div>
 
-          <form className='pt-16 px-4' onSubmit={onSubmit}>
+          <form className='pt-16 px-6' onSubmit={onSubmit}>
 
               <div className="textbox flex flex-col items-center gap-4">
 
                   <div className="input text-center">
-                    <span className='py-4 text-sm text-left text-gray-500'>
+                    <span className='py-8 text-sm text-left text-gray-500'>
                       Enter 6 digit OTP sent to your email address.
                     </span>
                     <input onChange={(e) => setOTP(e.target.value) } className={styles.textbox} type="text" placeholder='OTP' />
