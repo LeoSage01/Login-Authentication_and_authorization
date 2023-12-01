@@ -81,7 +81,7 @@ export default function Profile() {
                   <input onChange={onUpload} type="file" id='profile' name='profile' />
               </div>
 
-              <div className="textbox flex flex-col items-center gap-4">
+              <div className="textbox flex flex-col items-center gap-4 px-4">
                 <div className="name flex w-3/4 gap-6">
                   <input {...formik.getFieldProps('firstName')} className={`${styles.textbox} ${extend.textbox}`} type="text" placeholder='FirstName' />
                   <input {...formik.getFieldProps('lastName')} className={`${styles.textbox} ${extend.textbox}`} type="text" placeholder='LastName' />
