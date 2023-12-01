@@ -28,3 +28,12 @@
 input[type='file']{
     display: none;
 }
+
+@media screen and (max-width: 800px) {
+    /* Styles to apply when the screen width is 600 pixels or less */
+    .glass{
+        border-radius: 0px;
+        border: none;
+        @apply shrink-0 content-center w-[30%] px-6 min-w-max;
+    }
+  }
