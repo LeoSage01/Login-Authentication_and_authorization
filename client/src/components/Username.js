@@ -29,7 +29,7 @@ input[type='file']{
     display: none;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
     /* Styles to apply when the screen width is 600 pixels or less */
     .glass{
         border-radius: 0px;
